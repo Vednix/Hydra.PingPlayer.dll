@@ -68,7 +68,6 @@ namespace PingPlayer
                             int lines = 8;
                             string blanks = BlankLine(2);
                             int bytes = 17;
-                            Console.WriteLine($"[{TShockB.Players[player.Index].Name}] isMobile: {TSPlayerB.isMobile[player.Index]}");
                             if (!TSPlayerB.isMobile[player.Index])
                             {
                                 lines = 20;
