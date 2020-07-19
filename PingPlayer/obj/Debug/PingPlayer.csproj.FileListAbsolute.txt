@@ -1,4 +1,3 @@
-C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Debug\PingPlayer.csprojAssemblyReference.cache
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Debug\PingPlayer.csproj.CoreCompileInputs.cache
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Debug\PingPlayer.dll
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Debug\PingPlayer.pdb

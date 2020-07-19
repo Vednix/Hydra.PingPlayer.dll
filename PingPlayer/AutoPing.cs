@@ -10,6 +10,7 @@ using TShockAPI;
 using System.Net.NetworkInformation;
 using static Hydra.Extensions.Tools;
 using Hydra.Extensions;
+using Hydra;
 
 namespace PingPlayer
 {
@@ -31,9 +32,9 @@ namespace PingPlayer
                 //{
                 try
                 {
-                    Parallel.ForEach(TSPlayerB.tsArray.Where(p => p != null && p.Active && !string.IsNullOrEmpty(p.IP)), player =>
+                    Parallel.ForEach(TShockB.Players.Where(p => p != null && p.Active && !string.IsNullOrEmpty(p.IP)), player =>
                     {
-                        if (PlayerPing.Wait)
+                        if (PlayerPing.Wait || Hydra.Base.isDisposed)
                             return;
                         Ping p = new Ping();
 
@@ -66,14 +67,15 @@ namespace PingPlayer
 
                             int lines = 8;
                             string blanks = BlankLine(2);
-                            int bytes = 0;
+                            int bytes = 17;
+                            Console.WriteLine($"[{TShockB.Players[player.Index].Name}] isMobile: {TSPlayerB.isMobile[player.Index]}");
                             if (!TSPlayerB.isMobile[player.Index])
                             {
                                 lines = 20;
                                 blanks = BlankLine(60);
-                                bytes = 17;
+                                bytes = 0;
                             }
-                            string message = string.Format($"{BlankLine(lines)}AutoPing: {ping}ms{blanks}");
+                            string message = $"{BlankLine(lines)}AutoPing: {ping}ms{blanks}";
                             if (TSPlayerB.PingStatus[player.Index])
                                 player.SendData(PacketTypes.Status, message, bytes);
                             if (TSPlayerB.PingChat[player.Index])
@@ -86,7 +88,7 @@ namespace PingPlayer
                     TShock.Log.ConsoleError(ex.ToString());
                 }
                 //}, TaskScheduler.FromCurrentSynchronizationContext());
-                await Task.Delay(12000);
+                await Task.Delay(10000);
             }
         }
     }

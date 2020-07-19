@@ -87,7 +87,9 @@ namespace PingPlayer
                     case "me":
                         Ping p = new Ping();
                         string ping = p.Send(args.Player.IP).RoundtripTime.ToString();
-                        if (int.Parse(ping) != 0)
+                        if (args.Player.IP == "127.0.0.1" || args.Player.IP.StartsWith("10.0.") || args.Player.IP.StartsWith("192.168.") && ping == "0")
+                            ping = "<1";
+                        if (ping != "0")
                             args.Player.SendInfoMessage($"Ping {ping}ms");
                         else
                         {
@@ -121,6 +123,17 @@ namespace PingPlayer
                 args.Player.SendMessage("[c/ffd700:/ping togglechat] => Enables or disables automatic pinging via Chat", Color.LightGray);
                 args.Player.SendMessage("[c/ffd700:/ping me] => See your ping only once", Color.LightGray);
             }
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Commands.ChatCommands.Remove(new Command(PingCmd, "ping"));
+                ServerApi.Hooks.GamePostInitialize.Deregister(this, PostInitialize);
+                ServerApi.Hooks.ServerJoin.Deregister(this, OnJoin);
+                ServerApi.Hooks.NetGreetPlayer.Deregister(this, OnGreet);
+            }
+            base.Dispose(disposing);
         }
     }
 }
