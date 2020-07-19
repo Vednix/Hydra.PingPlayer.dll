@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PingPlayer.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,7 @@ using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
 using TShockAPI.Hooks;
+using Hydra.Extensions;
 
 namespace PingPlayer
 {
@@ -54,7 +54,7 @@ namespace PingPlayer
         private static void OnJoin(JoinEventArgs args)
         {
             Wait = true;
-            TSPlayerExt.Reset(args.Who);
+            TSPlayerB.ResetPingStats(args.Who);
         }
         private static void OnGreet(GreetPlayerEventArgs args)
         {
@@ -68,21 +68,21 @@ namespace PingPlayer
                 {
                     case "togglestatus":
                     case "status":
-                        TSPlayerExt.PingStatus[args.Player.Index] = !TSPlayerExt.PingStatus[args.Player.Index];
-                        TSPlayerExt.PingChat[args.Player.Index] = false;
+                        TSPlayerB.PingStatus[args.Player.Index] = !TSPlayerB.PingStatus[args.Player.Index];
+                        TSPlayerB.PingChat[args.Player.Index] = false;
                         if (args.Player.IsPortuguese)
-                            args.Player.SendSuccessMessage(string.Format("Agora você {0} receber ping através de Status", TSPlayerExt.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"));
+                            args.Player.SendSuccessMessage(string.Format("Agora você {0} receber ping através de Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"));
                         else
-                            args.Player.SendSuccessMessage(string.Format("Now you {0} receive ping via Status", TSPlayerExt.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"));
+                            args.Player.SendSuccessMessage(string.Format("Now you {0} receive ping via Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"));
                         break;
                     case "togglechat":
                     case "chat":
-                        TSPlayerExt.PingChat[args.Player.Index] = !TSPlayerExt.PingChat[args.Player.Index];
-                        TSPlayerExt.PingStatus[args.Player.Index] = false;
+                        TSPlayerB.PingChat[args.Player.Index] = !TSPlayerB.PingChat[args.Player.Index];
+                        TSPlayerB.PingStatus[args.Player.Index] = false;
                         if (args.Player.IsPortuguese)
-                            args.Player.SendSuccessMessage(string.Format("Agora você {0} receber ping através do Chat", TSPlayerExt.PingChat[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"));
+                            args.Player.SendSuccessMessage(string.Format("Agora você {0} receber ping através do Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"));
                         else
-                            args.Player.SendSuccessMessage(string.Format("Now you {0} receive ping via Chat", TSPlayerExt.PingChat[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"));
+                            args.Player.SendSuccessMessage(string.Format("Now you {0} receive ping via Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"));
                         break;
                     case "me":
                         Ping p = new Ping();
