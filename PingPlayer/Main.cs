@@ -17,7 +17,7 @@ namespace PingPlayer
     [ApiVersion(2, 1)]
     public class PlayerPing : TerrariaPlugin
     {
-        public override Version Version => new Version(1, 0, 0, 0);
+        public override Version Version => new Version(1, 0, 0, 2);
 
         public override string Name
         {
@@ -71,20 +71,21 @@ namespace PingPlayer
                         TSPlayerB.PingStatus[args.Player.Index] = !TSPlayerB.PingStatus[args.Player.Index];
                         TSPlayerB.PingChat[args.Player.Index] = false;
                         if (args.Player.IsPortuguese)
-                            args.Player.SendSuccessMessage(string.Format("Agora você {0} receber ping através de Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"));
-                        else
-                            args.Player.SendSuccessMessage(string.Format("Now you {0} receive ping via Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"));
+                            TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
+                                                                            PortugueseMessage: string.Format("Agora você {0} receber ping através de Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
+                                                                            SpanishMessage: string.Format("Ahora tu {0} ping a través del Estado", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
                         break;
                     case "togglechat":
                     case "chat":
                         TSPlayerB.PingChat[args.Player.Index] = !TSPlayerB.PingChat[args.Player.Index];
                         TSPlayerB.PingStatus[args.Player.Index] = false;
-                        if (args.Player.IsPortuguese)
-                            args.Player.SendSuccessMessage(string.Format("Agora você {0} receber ping através do Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"));
-                        else
-                            args.Player.SendSuccessMessage(string.Format("Now you {0} receive ping via Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"));
+                        TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
+                                                                        PortugueseMessage: string.Format("Agora você {0} receber ping através do Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
+                                                                        SpanishMessage: string.Format("Ahora tu {0} ping a través del Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
                         break;
                     case "me":
+                    case "eu":
+                    case "yo":
                         Ping p = new Ping();
                         string ping = p.Send(args.Player.IP).RoundtripTime.ToString();
                         if (args.Player.IP == "127.0.0.1" || args.Player.IP.StartsWith("10.0.") || args.Player.IP.StartsWith("192.168.") && ping == "0")
@@ -93,10 +94,9 @@ namespace PingPlayer
                             args.Player.SendInfoMessage($"Ping {ping}ms");
                         else
                         {
-                            if (args.Player.IsPortuguese)
-                                args.Player.SendErrorMessage("Seu provedor de internet não permite o servidor medir seu ping");
-                            else
-                                args.Player.SendErrorMessage("Your ISP does not allow the server to measure your ping");
+                            TSPlayerB.SendErrorMessage(args.Player.Index, DefaultMessage: "Your ISP does not allow the server to measure your ping",
+                                                                          PortugueseMessage: "Seu provedor de internet não permite o servidor medir seu ping",
+                                                                          SpanishMessage: "Su ISP no permite que el servidor mida su ping");
                         }
                         break;
                     default:
@@ -109,20 +109,21 @@ namespace PingPlayer
         }
         private static void ShowCmds(CommandArgs args)
         {
-            if (args.Player.IsPortuguese)
-            {
-                args.Player.SendMessage("PingPlayer - Comandos", Color.Magenta);
-                args.Player.SendMessage("[c/ffd700:/ping status] => Ativa ou desativa o envio automatico de pings através de Status", Color.LightGray);
-                args.Player.SendMessage("[c/ffd700:/ping chat] => Ativa ou desativa o envio automatico de pings através do Chat", Color.LightGray);
-                args.Player.SendMessage("[c/ffd700:/ping me] => Ver seu ping uma única vez apenas", Color.LightGray);
-            }
-            else
-            {
-                args.Player.SendMessage("PingPlayer - Commands", Color.Magenta);
-                args.Player.SendMessage("[c/ffd700:/ping togglestatus] => Enables or disables automatic pinging via Status", Color.LightGray);
-                args.Player.SendMessage("[c/ffd700:/ping togglechat] => Enables or disables automatic pinging via Chat", Color.LightGray);
-                args.Player.SendMessage("[c/ffd700:/ping me] => See your ping only once", Color.LightGray);
-            }
+            TSPlayerB.SendMessage(args.Player.Index, DefaultMessage: "PingPlayer - Commands", Color.Magenta,
+                                                     PortugueseMessage: "PingPlayer - Comandos",
+                                                     SpanishMessage: "PingPlayer - Comandos");
+
+            TSPlayerB.SendMessage(args.Player.Index, DefaultMessage: "[c/ffd700:/ping togglestatus] => Enables or disables automatic pinging via Status", Color.LightGray,
+                                                     PortugueseMessage: "[c/ffd700:/ping status] => Ativa ou desativa o envio automatico de pings através de Status",
+                                                     SpanishMessage: "[c/ffd700:/ping status] => Habilita o deshabilita el ping automático a través del estado");
+
+            TSPlayerB.SendMessage(args.Player.Index, DefaultMessage: "[c/ffd700:/ping togglechat] => Enables or disables automatic pinging via Chat", Color.LightGray,
+                                                     PortugueseMessage: "[c/ffd700:/ping chat] => Ativa ou desativa o envio automatico de pings através do Chat",
+                                                     SpanishMessage: "[c/ffd700:/ping chat] => Activa o desactiva el ping automático a través del chat");
+
+            TSPlayerB.SendMessage(args.Player.Index, DefaultMessage: "[c/ffd700:/ping me] => See your ping only once", Color.LightGray,
+                                                     PortugueseMessage: "[c/ffd700:/ping me] => Ver seu ping uma única vez apenas",
+                                                     SpanishMessage: "[c/ffd700:/ping yo] => Ver tu ping solo una vez");
         }
         protected override void Dispose(bool disposing)
         {
