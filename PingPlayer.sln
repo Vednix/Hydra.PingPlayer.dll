@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingPlayer", "PingPlayer\PingPlayer.csproj", "{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {836C0C33-EF51-4CAD-B54F-C9DCB971974D}
+	EndGlobalSection
+EndGlobal
