@@ -6,3 +6,4 @@ C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Rel
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hydra.PingPlayer.csproj.CopyComplete
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hydra.PingPlayer.dll
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hydra.PingPlayer.pdb
+C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hydra.PingPlayer.csprojAssemblyReference.cache

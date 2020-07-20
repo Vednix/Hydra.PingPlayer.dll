@@ -69,6 +69,7 @@ namespace PingPlayer
                 {
                     case "togglestatus":
                     case "status":
+                    case "estado":
                         InternalTSPlayer.PingStatus[args.Player.Index] = !InternalTSPlayer.PingStatus[args.Player.Index];
                         InternalTSPlayer.PingChat[args.Player.Index] = false;
                             TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Status", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
@@ -115,7 +116,7 @@ namespace PingPlayer
 
             TSPlayerB.SendMessage(args.Player.Index, DefaultMessage: "[c/ffd700:/ping togglestatus] => Enables or disables automatic pinging via Status", Color.LightGray,
                                                      PortugueseMessage: "[c/ffd700:/ping status] => Ativa ou desativa o envio automatico de pings através de Status",
-                                                     SpanishMessage: "[c/ffd700:/ping status] => Habilita o deshabilita el ping automático a través del estado");
+                                                     SpanishMessage: "[c/ffd700:/ping estado] => Habilita o deshabilita el ping automático a través del estado");
 
             TSPlayerB.SendMessage(args.Player.Index, DefaultMessage: "[c/ffd700:/ping togglechat] => Enables or disables automatic pinging via Chat", Color.LightGray,
                                                      PortugueseMessage: "[c/ffd700:/ping chat] => Ativa ou desativa o envio automatico de pings através do Chat",
