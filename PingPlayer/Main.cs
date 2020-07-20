@@ -18,7 +18,7 @@ namespace PingPlayer
     [ApiVersion(2, 1)]
     public class PlayerPing : TerrariaPlugin
     {
-        public override Version Version => new Version(1, 0, 1, 2);
+        public override Version Version => new Version(1, 0, 1, 3);
 
         public override string Name
         {
@@ -71,7 +71,6 @@ namespace PingPlayer
                     case "status":
                         InternalTSPlayer.PingStatus[args.Player.Index] = !InternalTSPlayer.PingStatus[args.Player.Index];
                         InternalTSPlayer.PingChat[args.Player.Index] = false;
-                        if (args.Player.IsPortuguese)
                             TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Status", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
                                                                             PortugueseMessage: string.Format("Agora você {0} receber ping através de Status", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
                                                                             SpanishMessage: string.Format("Ahora tu {0} ping a través del Estado", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
