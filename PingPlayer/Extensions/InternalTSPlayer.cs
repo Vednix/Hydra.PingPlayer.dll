@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 
-namespace Hidra.PingPlayer.Extensions
+namespace Hydra.PingPlayer.Extensions
 {
     class InternalTSPlayer
     {

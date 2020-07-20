@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hidra.PingPlayer", "PingPlayer\Hidra.PingPlayer.csproj", "{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.PingPlayer", "PingPlayer\Hydra.PingPlayer.csproj", "{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

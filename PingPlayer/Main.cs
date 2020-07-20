@@ -11,14 +11,14 @@ using TerrariaApi.Server;
 using TShockAPI;
 using TShockAPI.Hooks;
 using Hydra.Extensions;
-using Hidra.PingPlayer.Extensions;
+using Hydra.PingPlayer.Extensions;
 
 namespace PingPlayer
 {
     [ApiVersion(2, 1)]
     public class PlayerPing : TerrariaPlugin
     {
-        public override Version Version => new Version(1, 0, 1, 0);
+        public override Version Version => new Version(1, 0, 1, 1);
 
         public override string Name
         {

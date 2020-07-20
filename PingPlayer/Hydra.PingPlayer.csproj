@@ -7,8 +7,8 @@
     <ProjectGuid>{AEE4A2D7-25F1-42BB-BB7A-C04C961F3205}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hidra.PingPlayer</RootNamespace>
-    <AssemblyName>Hidra.PingPlayer</AssemblyName>
+    <RootNamespace>Hydra.PingPlayer</RootNamespace>
+    <AssemblyName>Hydra.PingPlayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

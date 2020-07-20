@@ -1,9 +1,8 @@
-C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Release\Hidra.PingPlayer.dll
-C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Release\Hidra.PingPlayer.pdb
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Release\Hydra.dll
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Release\Hydra.pdb
-C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hidra.PingPlayer.csprojAssemblyReference.cache
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hidra.PingPlayer.csproj.CoreCompileInputs.cache
 C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hidra.PingPlayer.csproj.CopyComplete
-C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hidra.PingPlayer.dll
-C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hidra.PingPlayer.pdb
+C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Release\Hydra.PingPlayer.dll
+C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\bin\Release\Hydra.PingPlayer.pdb
+C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hydra.PingPlayer.dll
+C:\Users\fabio\Downloads\PingPlayer\PingPlayer\PingPlayer.dll\PingPlayer\obj\Release\Hydra.PingPlayer.pdb

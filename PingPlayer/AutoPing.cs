@@ -5,7 +5,7 @@ using TShockAPI;
 using System.Net.NetworkInformation;
 using static Hydra.Extensions.Tools;
 using Hydra.Extensions;
-using Hidra.PingPlayer.Extensions;
+using Hydra.PingPlayer.Extensions;
 
 namespace PingPlayer
 {
