@@ -18,11 +18,11 @@ namespace PingPlayer
     [ApiVersion(2, 1)]
     public class PlayerPing : TerrariaPlugin
     {
-        public override Version Version => new Version(1, 0, 1, 1);
+        public override Version Version => new Version(1, 0, 1, 2);
 
         public override string Name
         {
-            get { return "PingPlayer"; }
+            get { return "Hydra.PingPlayer"; }
         }
 
         public override string Author
