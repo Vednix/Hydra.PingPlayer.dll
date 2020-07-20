@@ -11,13 +11,14 @@ using TerrariaApi.Server;
 using TShockAPI;
 using TShockAPI.Hooks;
 using Hydra.Extensions;
+using Hidra.PingPlayer.Extensions;
 
 namespace PingPlayer
 {
     [ApiVersion(2, 1)]
     public class PlayerPing : TerrariaPlugin
     {
-        public override Version Version => new Version(1, 0, 0, 2);
+        public override Version Version => new Version(1, 0, 1, 0);
 
         public override string Name
         {
@@ -54,7 +55,7 @@ namespace PingPlayer
         private static void OnJoin(JoinEventArgs args)
         {
             Wait = true;
-            TSPlayerB.ResetPingStats(args.Who);
+            InternalTSPlayer.ResetPingStats(args.Who);
         }
         private static void OnGreet(GreetPlayerEventArgs args)
         {
@@ -68,20 +69,20 @@ namespace PingPlayer
                 {
                     case "togglestatus":
                     case "status":
-                        TSPlayerB.PingStatus[args.Player.Index] = !TSPlayerB.PingStatus[args.Player.Index];
-                        TSPlayerB.PingChat[args.Player.Index] = false;
+                        InternalTSPlayer.PingStatus[args.Player.Index] = !InternalTSPlayer.PingStatus[args.Player.Index];
+                        InternalTSPlayer.PingChat[args.Player.Index] = false;
                         if (args.Player.IsPortuguese)
-                            TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
-                                                                            PortugueseMessage: string.Format("Agora você {0} receber ping através de Status", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
-                                                                            SpanishMessage: string.Format("Ahora tu {0} ping a través del Estado", TSPlayerB.PingStatus[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
+                            TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Status", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
+                                                                            PortugueseMessage: string.Format("Agora você {0} receber ping através de Status", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
+                                                                            SpanishMessage: string.Format("Ahora tu {0} ping a través del Estado", InternalTSPlayer.PingStatus[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
                         break;
                     case "togglechat":
                     case "chat":
-                        TSPlayerB.PingChat[args.Player.Index] = !TSPlayerB.PingChat[args.Player.Index];
-                        TSPlayerB.PingStatus[args.Player.Index] = false;
-                        TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
-                                                                        PortugueseMessage: string.Format("Agora você {0} receber ping através do Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
-                                                                        SpanishMessage: string.Format("Ahora tu {0} ping a través del Chat", TSPlayerB.PingChat[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
+                        InternalTSPlayer.PingChat[args.Player.Index] = !InternalTSPlayer.PingChat[args.Player.Index];
+                        InternalTSPlayer.PingStatus[args.Player.Index] = false;
+                        TSPlayerB.SendSuccessMessage(args.Player.Index, DefaultMessage: string.Format("Now you {0} receive ping via Chat", InternalTSPlayer.PingChat[args.Player.Index] ? "[c/98C807:will]" : "[c/ffa500:will not]"),
+                                                                        PortugueseMessage: string.Format("Agora você {0} receber ping através do Chat", InternalTSPlayer.PingChat[args.Player.Index] ? "[c/98C807:irá]" : "[c/ffa500:não irá]"),
+                                                                        SpanishMessage: string.Format("Ahora tu {0} ping a través del Chat", InternalTSPlayer.PingChat[args.Player.Index] ? "[c/98C807:recibirá]" : "[c/ffa500:no hará]"));
                         break;
                     case "me":
                     case "eu":

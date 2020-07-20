@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using Terraria;
-using TerrariaApi.Server;
 using TShockAPI;
 using System.Net.NetworkInformation;
 using static Hydra.Extensions.Tools;
 using Hydra.Extensions;
-using Hydra;
+using Hidra.PingPlayer.Extensions;
 
 namespace PingPlayer
 {
@@ -37,34 +32,34 @@ namespace PingPlayer
                         if (PlayerPing.Wait || Hydra.Base.isDisposed)
                             return;
                         Ping p = new Ping();
-                        TSPlayerB.PingedIP[player.Index] = player.IP;
+                        InternalTSPlayer.PingedIP[player.Index] = player.IP;
                         string ping = p.Send(player.IP).RoundtripTime.ToString();
                         if (player.IP == "127.0.0.1" || player.IP.StartsWith("10.0.") || player.IP.StartsWith("192.168.") && ping == "0")
                             ping = "<1";
 
                         if (ping != "0")
                         {
-                            if (ping != "<1" && Int32.Parse(ping) >= 230 && !TSPlayerB.WarnPingRed[player.Index])
+                            if (ping != "<1" && Int32.Parse(ping) >= 230 && !InternalTSPlayer.WarnPingRed[player.Index])
                             {
                                 TSPlayerB.SendErrorMessage(player.Index, DefaultMessage: "Your response time with the server is above 230ms, lag will be noticed in several moments.",
                                                                          PortugueseMessage: "Seu tempo de resposta com o servidor está acima de 230ms, lag será notado em diversos momentos.",
                                                                          SpanishMessage: "Su tiempo de respuesta con el servidor es superior a 230ms, el retraso se notará en diferentes momentos.");
-                                TSPlayerB.WarnPingRed[player.Index] = true;
-                                TSPlayerB.Pinged[player.Index] = false;
+                                InternalTSPlayer.WarnPingRed[player.Index] = true;
+                                InternalTSPlayer.Pinged[player.Index] = false;
                             }
-                            if (ping != "<1" && Int32.Parse(ping) >= 120 && !TSPlayerB.WarnPingOrange[player.Index] && !TSPlayerB.WarnPingRed[player.Index])
+                            if (ping != "<1" && Int32.Parse(ping) >= 120 && !InternalTSPlayer.WarnPingOrange[player.Index] && !InternalTSPlayer.WarnPingRed[player.Index])
                             {
                                 TSPlayerB.SendWarningMessage(player.Index, DefaultMessage: "Your response time with the server is above 120ms, lag may be noticed in a few moments.",
                                                                            PortugueseMessage: "Seu tempo de resposta com o servidor está acima de 120ms, lag poderá ser notado em alguns momentos.",
                                                                            SpanishMessage: "Su tiempo de respuesta con el servidor es superior a 120ms, el retraso se puede notar en unos momentos.");
-                                TSPlayerB.WarnPingOrange[player.Index] = true;
-                                TSPlayerB.Pinged[player.Index] = false;
+                                InternalTSPlayer.WarnPingOrange[player.Index] = true;
+                                InternalTSPlayer.Pinged[player.Index] = false;
                             }
 
-                            if (!TSPlayerB.Pinged[player.Index])
+                            if (!InternalTSPlayer.Pinged[player.Index])
                             {
                                 player.SendSuccessMessage($"Ping {ping}ms");
-                                TSPlayerB.Pinged[player.Index] = true;
+                                InternalTSPlayer.Pinged[player.Index] = true;
                             }
 
                             int lines = 8;
@@ -77,9 +72,9 @@ namespace PingPlayer
                                 bytes = 0;
                             }
                             string message = $"{BlankLine(lines)}AutoPing: {ping}ms{blanks}";
-                            if (TSPlayerB.PingStatus[player.Index])
+                            if (InternalTSPlayer.PingStatus[player.Index])
                                 player.SendData(PacketTypes.Status, message, bytes);
-                            if (TSPlayerB.PingChat[player.Index])
+                            if (InternalTSPlayer.PingChat[player.Index])
                                 player.SendInfoMessage($"AutoPing {ping}ms");
                             p.Dispose();
                         }
